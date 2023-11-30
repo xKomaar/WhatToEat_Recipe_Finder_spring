@@ -1,4 +1,4 @@
-package com.example.whattoeat_spring;
+package pl.whattoeat.whattoeat_spring;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

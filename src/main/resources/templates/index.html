@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
-    <title>Homepage</title>
+    <title>WhatToEat</title>
     <link rel="stylesheet" th:href="@{/css/index.css}" />
 </head>
 <body>
@@ -42,8 +42,8 @@
             <div class="text">
                 <article>
                     <p>Find recipes you can cook with what you have in the fridge!</p>
-                    <button class="button-link" onclick="document.getElementById('loginLink').click()">
-                        <span><a id="loginLink" th:href="@{/login}">Let's Start!</a></span>
+                    <button class="button-link" onclick="document.getElementById('ingredient_input_link').click()">
+                        <span><a id="ingredient_input_link" th:href="@{/ingredients_input}">Let's Start!</a></span>
                     </button>
                 </article>
             </div>
