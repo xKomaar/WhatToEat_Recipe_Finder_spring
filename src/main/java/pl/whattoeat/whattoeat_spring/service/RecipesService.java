@@ -2,9 +2,7 @@ package pl.whattoeat.whattoeat_spring.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import pl.whattoeat.whattoeat_spring.model.Ingredient;
-import pl.whattoeat.whattoeat_spring.model.Recipe;
-import pl.whattoeat.whattoeat_spring.model.RecipeJsonParser;
+import pl.whattoeat.whattoeat_spring.model.*;
 
 import java.util.ArrayList;
 
@@ -64,54 +62,66 @@ public class RecipesService {
                 }
             }
             int matchPercent = (int)(((double)validIngredientCount/(double)recipeIngredientCount)*100);
-            //TODO Tymczasowe >50 dopoki nie ma selectorow
-            if(matchPercent >= 50) {
+            if(matchPercent >= MatchPercent.getMatchPercent()) {
                 recipe.setMatchPercent(matchPercent);
                 outputRecipes.add(recipe);
             }
-//            if(matchPercent >= Selectors.matchThreshold) {
-//                recipe.setMatchPercent(matchPercent);
-//                outputRecipes.add(recipe);
-//            }
-//        }
-
-//        if(Selectors.sortByIngredientCountFirst) {
-//            //sorting only by ingredient count
-//            outputRecipes.sort((o1,o2) -> {
-//                if(o1.getIngredientList().size() > o2.getIngredientList().size()) {
-//                    return -1;
-//                }
-//                else if(o1.getIngredientList().size() == o2.getIngredientList().size()) {
-//                    if(o1.getMatchPercent() > o2.getMatchPercent()) {
-//                        return -1;
-//                    }
-//                    else if (o1.getMatchPercent() == o2.getMatchPercent()){
-//                        return 0;
-//                    }
-//                    else return 1;
-//                }
-//                else return 1;
-//            });
-//        }
-//        else {
-//            //Sorting the list, example: if both recipes have 100% match, then a recipe is chosen with the most amount of ingredients
-//            outputRecipes.sort((o1,o2) -> {
-//                if(o1.getMatchPercent() > o2.getMatchPercent()) {
-//                    return -1;
-//                }
-//                else if(o1.getMatchPercent() == o2.getMatchPercent()) {
-//                    if(o1.getIngredientList().size() > o2.getIngredientList().size()) {
-//                        return -1;
-//                    }
-//                    else if (o1.getIngredientList().size() == o2.getIngredientList().size()){
-//                        return 0;
-//                    }
-//                    else return 1;
-//                }
-//                else return 1;
-//            });
+        }
+        if(Selectors.sortingSelector == Selectors.SortingSelector.SORT_BY_INGREDIENT_COUNT) {
+            //sorting only by ingredient count
+            outputRecipes.sort((o1,o2) -> {
+                if(o1.getIngredientList().size() > o2.getIngredientList().size()) {
+                    return -1;
+                }
+                else if(o1.getIngredientList().size() == o2.getIngredientList().size()) {
+                    if(o1.getMatchPercent() > o2.getMatchPercent()) {
+                        return -1;
+                    }
+                    else if (o1.getMatchPercent() == o2.getMatchPercent()){
+                        return 0;
+                    }
+                    else return 1;
+                }
+                else return 1;
+            });
+        }
+        if(Selectors.sortingSelector == Selectors.SortingSelector.SORT_BY_MATCH_PERCENTAGE) {
+            //Sorting the list, example: if both recipes have 100% match, then a recipe is chosen with the most amount of ingredients
+            outputRecipes.sort((o1,o2) -> {
+                if(o1.getMatchPercent() > o2.getMatchPercent()) {
+                    return -1;
+                }
+                else if(o1.getMatchPercent() == o2.getMatchPercent()) {
+                    if(o1.getIngredientList().size() > o2.getIngredientList().size()) {
+                        return -1;
+                    }
+                    else if (o1.getIngredientList().size() == o2.getIngredientList().size()){
+                        return 0;
+                    }
+                    else return 1;
+                }
+                else return 1;
+            });
         }
 
         return outputRecipes;
+    }
+
+    public void resetIngredientsAvailability(ArrayList<Recipe> recipeList) {
+        for(Recipe r : recipeList) {
+            for(Ingredient i : r.getIngredientList()) {
+                i.setAvailable(false);
+            }
+        }
+    }
+
+    public Recipe findRecipeByTitle(String title) {
+        ArrayList<Recipe> recipeList = RecipeJsonParser.getRecipeList();
+        for(Recipe r : recipeList) {
+            if(r.getTitle().equals(title)) {
+                return r;
+            }
+        }
+        return null;
     }
 }

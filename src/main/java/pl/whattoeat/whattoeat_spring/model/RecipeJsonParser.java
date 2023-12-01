@@ -23,14 +23,15 @@ public final class RecipeJsonParser {
 
                 String title = (String) recipeJson.get("Title");
                 String instructions = (String) recipeJson.get("Instructions");
+                String pictureLink = (String) recipeJson.get("Image_Name");
 
                 JSONArray ingredientJsonArray = (JSONArray) recipeJson.get("Ingredients");
                 ArrayList<Ingredient> ingredientList = new ArrayList<>();
                 for (Object ingredient : ingredientJsonArray) {
                     ingredientList.add(new Ingredient((String)ingredient));
                 }
-                if(!ingredientList.isEmpty() && !title.equals("") && !instructions.equals("")) {
-                    recipeList.add(new Recipe(title, ingredientList, instructions));
+                if(!ingredientList.isEmpty() && !title.equals("") && !instructions.equals("") && !pictureLink.equals("")) {
+                    recipeList.add(new Recipe(title, ingredientList, instructions, pictureLink));
                 }
             }
         }catch(Exception e) {

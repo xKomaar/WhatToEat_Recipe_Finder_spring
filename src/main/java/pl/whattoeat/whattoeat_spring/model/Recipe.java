@@ -8,11 +8,13 @@ public final class Recipe {
     private final ArrayList<Ingredient> ingredientList;
     private final String instructions;
     private int matchPercent;
+    private String pictureLink;
 
-    public Recipe(String title, ArrayList<Ingredient> ingredientList, String instructions) {
+    public Recipe(String title, ArrayList<Ingredient> ingredientList, String instructions, String pictureLink) {
         this.title = title;
         this.ingredientList = ingredientList;
         this.instructions = instructions;
+        this.pictureLink = pictureLink;
         this.matchPercent = 0;
     }
 
@@ -34,6 +36,10 @@ public final class Recipe {
 
     public int getMatchPercent() {
         return this.matchPercent;
+    }
+
+    public String getPictureLink() {
+        return this.pictureLink;
     }
 
     @Override

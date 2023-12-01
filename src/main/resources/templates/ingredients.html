@@ -6,7 +6,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Ingredient Input</title>
 		<link rel="stylesheet" th:href="@{/css/ingredients.css}" />
-		<link rel="stylesheet" href="../static/css/ingredients.css">
 		<script src="https://kit.fontawesome.com/30b5c3e166.js" crossorigin="anonymous"></script>
 	</head>
 	<body>
@@ -15,23 +14,21 @@
 				<h1 class="what">What<span class="to">To</span><span class="eat">Eat</span></h1>
 				<div class="line"></div>
 				<div class="add-note anim" style="--delay: 0.2s">
-					<a th:href="@{'/ingredients_input/' + 'add'}"><i class="fa-solid fa-circle-plus"></i></a>
+					<label><a th:href="@{'/ingredients_input/' + 'add'}"><i class="fa-solid fa-circle-plus"></i></a><br> Add Ingredient</label>
 				</div>
 				<div class="add-note anim" style="--delay: 0.2s">
-					<a th:href="@{'/ingredients_input/' + 'deleteAll'}"><i class="fa-solid fa-trash-can"></i></a>
+					<label><a th:href="@{'/ingredients_input/' + 'deleteAll'}"><i class="fa-solid fa-trash-can"></i></a><br> Delete All Ingredients</label>
+				</div>
+				<br>
+				<div class="slide-bar">
+					<label for="slider">Minimum Match Percentage: <span id="sliderValue">50</span></label>
+					<input type="range" id="slider" name="slider" min="0" max="100" value="50">
 				</div>
 				<div class="add-note anim" style="--delay: 0.2s">
-					<a th:href="@{'/recipes'}"><i class="fa-solid fa-search"></i></a>
+					<label><a th:href="@{'/recipes'}"><i class="fa-solid fa-search"></i></a><br> Search For Recipes</label>
 				</div>
 			</div>
 			<div class="wrapper">
-				<div class="header">
-							<form class="search-bar" th:action="@{'/catalogs/search'}"
-								  th:method="post">
-								<input  type="text" id="search" name="search" placeholder="Search" />
-								<button class="search" type="submit"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
-							</form>
-				</div>
 				<div class="main-container">
 					<div class="anim main-catalog" style="--delay: 0.1s">
 						<ul th:each="ingredient : ${ingredientList}">

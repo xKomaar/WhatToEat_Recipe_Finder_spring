@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recipe Details</title>
+  <link rel="stylesheet" th:href="@{/css/recipes.css}" />
+  <link rel="stylesheet" th:href="@{/css/boxshadows.css}" />
+  <script src="https://kit.fontawesome.com/30b5c3e166.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<div class="container">
+  <div class="sidebar">
+    <h1 class="what">What<span class="to">To</span><span class="eat">Eat</span></h1>
+    <div class="line"></div>
+    <div class="add-note anim" style="--delay: 0.2s">
+      <a th:href="@{'/recipes' + '/sortByIngredientCount'}" ><i class="sort fa-solid fa-arrow-down-a-z"></i></a>
+    </div>
+    <div class="add-note anim" style="--delay: 0.2s">
+      <a th:href="@{'/recipes' + '/sortByMatchPercent'}" ><i class="sort fa-solid fa-arrow-up-a-z"></i></a>
+    </div>
+  </div>
+  <div class="wrapper">
+    <div class="header">
+      <form class="search-bar" th:action="@{'/recipes/search'}" th:method="post">
+        <input type="text" id="search" name="search" placeholder="Search" />
+        <button class="search" type="submit"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
+      </form>
+    </div>
+    <div class="main-container">
+      <div class="anim main-notes" style="--delay: 0.1s">
+        <ul th:each="recipe : ${recipeList}">
+          <a th:href="@{'/recipes/recipeView?title=' + ${recipe.getTitle()}}" class="recipe-container-link" style="color: inherit; text-decoration: none; border: none; background-color: transparent;">
+            <div class="container-notes">
+              <div class="testimonial">
+                <h3 th:text="${recipe.getTitle()}"></h3>
+                <p><img th:src="@{'/food_img/' + ${recipe.getPictureLink()} + '.jpg'}" /></p>
+
+                <div th:if="${recipe.getMatchPercent() >= 85}" style="color: green;">
+                  Match Percentage = <span th:text="${recipe.getMatchPercent()}"></span>
+                </div>
+                <div th:if="${recipe.getMatchPercent() >= 70 and recipe.getMatchPercent() < 85}" style="color: orange;">
+                  Match Percentage = <span th:text="${recipe.getMatchPercent()}"></span>
+                </div>
+                <div th:if="${recipe.getMatchPercent() >= 50 and recipe.getMatchPercent() < 70}" style="color: #FFD700;"> <!-- Use gold color -->
+                  Match Percentage = <span th:text="${recipe.getMatchPercent()}"></span>
+                </div>
+                <div th:if="${recipe.getMatchPercent() < 50}" style="color: red;">
+                  Match Percentage = <span th:text="${recipe.getMatchPercent()}"></span>
+                </div>
+
+                <div>
+                  Ingredient Count = <span th:text="${recipe.getIngredientList().size()}"></span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="create-note">
+  <div class="box-note">
+    <h2 class="note" th:text="${recipe.getTitle()}"></h2>
+    <div class="ingredients-container input-box">
+      <label>Ingredients:</label>
+      <ul class="ingredients-list" th:each="ingredient : ${recipe.getIngredientList()}">
+        <li th:text="${ingredient.getName()}"></li>
+      </ul>
+    </div>
+    <div class="instructions-container input-box">
+      <label>Instructions:</label>
+      <p th:text="${recipe.getInstructions()}"></p>
+    </div>
+    <a th:href="@{'/recipes'}"><i class="fa-solid fa-xmark"></i></a>
+  </div>
+</div>
+
+<script type="text/javascript" th:src="@{/js/recipes.js}"></script>
+</body>
+
+</html>
