@@ -1,44 +1,47 @@
 package pl.whattoeat.whattoeat_spring.controller;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import pl.whattoeat.whattoeat_spring.service.IngredientInputService;
+
+import java.util.ArrayList;
 
 @Controller
 @RequestMapping("/ingredients_input")
 @AllArgsConstructor
 public class IngredientInputController {
+
+    private final IngredientInputService ingredientInputService;
+
     @GetMapping("")
-    public String getIngredients(Model model, HttpSession session, HttpServletRequest request) {
-//        Optional<String> sortValue = Arrays.stream(request.getCookies()).filter(
-//                c -> c.getName().equals("catalogCookie" + session.getAttribute("userId"))).map(Cookie::getValue).findAny();
-//
-//        if(sortValue.isEmpty())
-//            return "redirect:/login";
-//
-//        if (sortValue.get().equals("ASC"))
-//            return "redirect:/catalogs/ASC";
-//        else if (sortValue.get().equals("DESC"))
-//            return "redirect:/catalogs/DESC";
-//        else if (sortValue.get().equals("notesASC"))
-//            return "redirect:/catalogs/notesASC";
-//        else if (sortValue.get().equals("notesDESC"))
-//            return "redirect:/catalogs/notesDESC";
-//
-//        List<Catalog> catalogList = catalogService.getCatalogsByUserId((Integer) session.getAttribute("userId"));
-//        Optional<User> user = userService.getUserById((Integer) session.getAttribute("userId"));
-//        model.addAttribute("catalogs", catalogList);
-//        model.addAttribute("user", user.get());
+    public String getIngredients(Model model) {
+        ArrayList<String> ingredientList = ingredientInputService.getIngredients();
+        model.addAttribute("ingredientList", ingredientList);
         return "ingredients";
     }
 
-    @GetMapping("add")
-    public String getCatalogsByUserId(Model model, HttpSession session, HttpServletRequest request) {
-
+    @GetMapping("/add")
+    public String redirectAdd() {
         return "addIngredient";
+    }
+
+    @PostMapping("/add")
+    public String addIngredient(@RequestParam String ingredient) {
+        ingredientInputService.addIngredient(ingredient);
+        return "redirect:/ingredients_input";
+    }
+
+    @GetMapping("/delete/{ingredient}")
+    public String deleteIngredient(@PathVariable String ingredient) {
+        ingredientInputService.deleteIngredient(ingredient);
+        return "redirect:/ingredients_input";
+    }
+
+    @GetMapping("/deleteAll")
+    public String deleteAllIngredients() {
+        ingredientInputService.deleteAllIngredients();
+        return "redirect:/ingredients_input";
     }
 }
