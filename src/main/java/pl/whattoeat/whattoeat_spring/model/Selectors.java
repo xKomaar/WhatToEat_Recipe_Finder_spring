@@ -8,6 +8,8 @@ public class Selectors {
         SORT_BY_MATCH_PERCENTAGE
     }
 
+    public static String searchQuery = "Search";
+
     public static SortingSelector sortingSelector = SortingSelector.DONT_SORT;
 }
 

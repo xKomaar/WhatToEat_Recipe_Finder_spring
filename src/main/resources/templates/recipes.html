@@ -30,7 +30,7 @@
     <div class="wrapper">
         <div class="header">
             <form class="search-bar" th:action="@{'/recipes/search'}" th:method="post">
-                <input type="text" id="search" name="search" placeholder="Search" />
+                <input type="text" id="search" name="search" th:placeholder="${searchQuery}" />
                 <button class="search" type="submit"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
             </form>
         </div>

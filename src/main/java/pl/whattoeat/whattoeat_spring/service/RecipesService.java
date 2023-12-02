@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class RecipesService {
 
     public ArrayList<Recipe> getMatchingRecipes(ArrayList<String> ingredientsList) {
+        resetIngredientsAvailability();
         ArrayList<Recipe> outputRecipes = new ArrayList<>();
         ArrayList<Recipe> recipeList = RecipeJsonParser.getRecipeList();
 
@@ -107,8 +108,8 @@ public class RecipesService {
         return outputRecipes;
     }
 
-    public void resetIngredientsAvailability(ArrayList<Recipe> recipeList) {
-        for(Recipe r : recipeList) {
+    public void resetIngredientsAvailability() {
+        for(Recipe r : RecipeJsonParser.getRecipeList()) {
             for(Ingredient i : r.getIngredientList()) {
                 i.setAvailable(false);
             }

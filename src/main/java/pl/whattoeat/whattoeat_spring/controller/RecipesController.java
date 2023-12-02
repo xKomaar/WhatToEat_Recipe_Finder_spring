@@ -34,8 +34,14 @@ public class RecipesController {
         if(checkIfListEmpty(recipeList)) {
             return "redirect:/ingredients_input";
         }
-        model.addAttribute("recipeList", recipeList);
-        recipesService.resetIngredientsAvailability(recipeList);
+
+        List<Recipe> filteredRecipeList = recipeList;
+        if(!Selectors.searchQuery.equals("Search")) {
+            filteredRecipeList = recipeList.stream().filter(r -> r.getTitle().toLowerCase().contains(Selectors.searchQuery.toLowerCase())).toList();
+        }
+
+        model.addAttribute("recipeList", filteredRecipeList);
+        model.addAttribute("searchQuery", Selectors.searchQuery);
         return "recipes";
     }
 
@@ -49,10 +55,16 @@ public class RecipesController {
         if(checkIfListEmpty(recipeList)) {
             return "redirect:/ingredients_input";
         }
-        model.addAttribute("recipeList", recipeList);
+
+        List<Recipe> filteredRecipeList = recipeList;
+        if(!Selectors.searchQuery.equals("Search")) {
+            filteredRecipeList = recipeList.stream().filter(r -> r.getTitle().toLowerCase().contains(Selectors.searchQuery.toLowerCase())).toList();
+        }
+
+        model.addAttribute("recipeList", filteredRecipeList);
         Recipe recipe = recipesService.findRecipeByTitle(recipeTitle);
         model.addAttribute("recipe", recipe);
-        recipesService.resetIngredientsAvailability(recipeList);
+        model.addAttribute("searchQuery", Selectors.searchQuery);
         return "recipeView";
     }
 
@@ -79,28 +91,18 @@ public class RecipesController {
     @GetMapping("/dontSort")
     public String dontSort() {
         Selectors.sortingSelector = Selectors.SortingSelector.SORT_BY_MATCH_PERCENTAGE;
+        Selectors.searchQuery = "Search";
         return "redirect:/recipes";
     }
 
     @PostMapping("/search")
-    public String search(@RequestParam(name="search") String search, Model model) {
+    public String search(@RequestParam(name="search") String search) {
         if(search == null || search.isEmpty()) {
+            Selectors.searchQuery = "Search";
             return "redirect:/recipes";
         } else {
-            ArrayList<String> ingredientList = ingredientInputService.getIngredients();
-            if(checkIfListEmpty(ingredientList)) {
-                return "redirect:/ingredients_input";
-            }
-            ArrayList<Recipe> recipeList = recipesService.getMatchingRecipes(ingredientList);
-            if(checkIfListEmpty(recipeList)) {
-                return "redirect:/ingredients_input";
-            }
-
-            List<Recipe> filteredRecipeList = recipeList.stream().filter(r -> r.getTitle().toLowerCase().contains(search.toLowerCase())).toList();
-
-            model.addAttribute("recipeList", filteredRecipeList);
-            recipesService.resetIngredientsAvailability(recipeList);
+            Selectors.searchQuery = search;
         }
-        return "recipes";
+        return "redirect:/recipes";
     }
 }

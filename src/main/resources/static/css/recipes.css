@@ -498,9 +498,10 @@ input[type="date"] {
 }
 
 .testimonial {
+    color: #353434;
     flex: 1;
-    border: 2px solid;
     border-radius: 12px;
+    border: 2px solid lightgrey;
     padding: 12px;
     background-color: #fff;
     overflow: auto;
@@ -589,11 +590,11 @@ input[type="date"] {
     top: 5%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #960a4b;
+    color: #353434
 }
 
 .create-note {
-    color: #960a4b;
+    color: #353434;
     height: auto;
 }
 
@@ -611,10 +612,11 @@ input[type="date"] {
     display: flex;
     flex-direction: row;
     padding: 0;
+    margin: 0px!important;
 }
 
 .ingredients-list li {
-    margin-bottom: 5px;
+    margin: 0px!important;
 }
 
 .instructions-container {
@@ -631,7 +633,7 @@ input[type="date"] {
 
 .input-box label {
     position: absolute;
-    top: -60%;
+    top: -13%;
     font-size: 1.1em;
     pointer-events: none;
 }
@@ -675,8 +677,6 @@ form .button {
     background-color: aqua;
     color: #f4157e;
 }
-
-/*UDOSTEPNIANIE NOTATKI*/
 
 .share {
     position: absolute;

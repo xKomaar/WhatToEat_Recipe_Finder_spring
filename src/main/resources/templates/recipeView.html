@@ -9,6 +9,41 @@
   <link rel="stylesheet" th:href="@{/css/recipes.css}" />
   <link rel="stylesheet" th:href="@{/css/boxshadows.css}" />
   <script src="https://kit.fontawesome.com/30b5c3e166.js" crossorigin="anonymous"></script>
+  <style>
+    body > div.create-note > div > div.ingredients-container.input-box {
+      margin: 0 0 2% 0!important;
+      overflow-y: auto!important;
+      max-height: 40%!important;;
+      display: block!important;
+
+    }
+    .ingredients-list{
+      margin: 0!important;
+    }
+    body  div.create-note  div  div.ingredients-container.input-box  label {
+      position: unset!important;
+    }
+    .input-box label{
+      position: unset!important;
+    }
+    .instructions-container {
+      max-height: 400px!important;
+      overflow-y: auto!important;
+      margin-top: 5%!important;
+    }
+
+    .input-box {
+      display: unset!important;
+      position: unset!important;
+      justify-content: center!important;
+      margin: 0px!important;
+
+    }
+    body > div.create-note > div > label:nth-child(2) {
+      margin-top: 7%!important;
+    }
+  </style>
+
 </head>
 
 <body>
@@ -32,7 +67,7 @@
   <div class="wrapper">
     <div class="header">
       <form class="search-bar" th:action="@{'/recipes/search'}" th:method="post">
-        <input type="text" id="search" name="search" placeholder="Search" />
+        <input type="text" id="search" name="search" th:placeholder="${searchQuery}" />
         <button class="search" type="submit"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
       </form>
     </div>
@@ -73,14 +108,17 @@
 <div class="create-note">
   <div class="box-note">
     <h2 class="note" th:text="${recipe.getTitle()}"></h2>
-    <div class="ingredients-container input-box">
-      <label>Ingredients:</label>
-      <ul class="ingredients-list" th:each="ingredient : ${recipe.getIngredientList()}">
-        <li th:text="${ingredient.getName()}"></li>
+    <label style="font-size: 20px; "><b>Ingredients:</b></label>
+    <div class="ingredients-container input-box" >
+
+      <ul class="ingredients-list" th:each="ingredient : ${recipe.getIngredientList()}" >
+        <li th:if="${ingredient.isAvailable()}" th:text="'• ' + ${ingredient.getName()}" style="color: green;"></li>
+        <li th:unless="${ingredient.isAvailable()}" th:text="'• ' + ${ingredient.getName()}" style="color: red;"></li>
       </ul>
     </div>
+    <label style="font-size: 20px; "><b>Instructions:</b></label>
     <div class="instructions-container input-box">
-      <label>Instructions:</label>
+
       <p th:text="${recipe.getInstructions()}"></p>
     </div>
     <a th:href="@{'/recipes'}"><i class="fa-solid fa-xmark"></i></a>

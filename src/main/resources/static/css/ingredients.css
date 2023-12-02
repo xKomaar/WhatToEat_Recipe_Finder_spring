@@ -403,8 +403,6 @@ i {
 	border-bottom: solid 1px rgba(240, 248, 255, 0.8);
 }
 
-/* EDYCJA ORAZ TWORZENIE KATALOGU*/
-
 .box-catalog {
 	position: absolute;
 	display: flex;
