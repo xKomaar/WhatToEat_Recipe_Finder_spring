@@ -493,7 +493,7 @@ nav .menu .menu_icon:hover .icon:after {
 	box-shadow: 0px 10px 10px -10px rgba(0, 0, 0, 0.5);
 	transform: translateY(5px);
 	background: #A8DF8E;
-	color: white;
+	color: floralwhite;
 }
 .wrapper .container .WhatToEat {
 	font-size: 120px;

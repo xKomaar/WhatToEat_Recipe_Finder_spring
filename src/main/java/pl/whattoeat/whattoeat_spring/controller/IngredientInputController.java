@@ -23,7 +23,9 @@ public class IngredientInputController {
     }
 
     @GetMapping("/add")
-    public String redirectAdd() {
+    public String redirectAdd(Model model) {
+        ArrayList<String> ingredientList = ingredientInputService.getIngredients();
+        model.addAttribute("ingredientList", ingredientList);
         return "addIngredient";
     }
 
@@ -44,4 +46,5 @@ public class IngredientInputController {
         ingredientInputService.deleteAllIngredients();
         return "redirect:/ingredients_input";
     }
+
 }

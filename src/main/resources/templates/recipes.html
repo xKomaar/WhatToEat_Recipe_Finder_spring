@@ -15,10 +15,16 @@
         <h1 class="what">What<span class="to">To</span><span class="eat">Eat</span></h1>
         <div class="line"></div>
         <div class="add-note anim" style="--delay: 0.2s">
-            <a th:href="@{'/recipes' + '/sortByIngredientCount'}" ><i class="sort fa-solid fa-arrow-down-a-z"></i></a>
+            <label><a th:href="@{'/recipes' + '/sortByMatchPercent'}"><i class="fa-solid fa-arrow-down-9-1"></i></a><br>Sort By Match Percentage</label>
         </div>
         <div class="add-note anim" style="--delay: 0.2s">
-            <a th:href="@{'/recipes' + '/sortByMatchPercent'}" ><i class="sort fa-solid fa-arrow-up-a-z"></i></a>
+            <label><a th:href="@{'/recipes' + '/sortByIngredientCount'}"><i class="fa-solid fa-arrow-down-short-wide"></i></a><br>Sort By Ingredient Count</label>
+        </div>
+        <div class="add-note anim" style="--delay: 0.2s">
+            <label><a th:href="@{'/recipes' + '/dontSort'}"><i class="fa-solid fa-filter-circle-xmark"></i></a><br>Clear Sorting and Searching</label>
+        </div>
+        <div class="add-note anim" style="--delay: 0.2s">
+            <label><a th:href="@{'/ingredients_input'}"><i class="fa-solid fa-arrow-left"></i></a><br>Go Back to Ingredients Input</label>
         </div>
     </div>
     <div class="wrapper">

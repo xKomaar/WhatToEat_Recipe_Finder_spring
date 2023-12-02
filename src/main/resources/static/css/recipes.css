@@ -213,12 +213,12 @@ body:before {
 
 .fa-magnifying-glass {
     transition: 0.3s;
-    color: #2243ae;
+    color: floralwhite;
     font-size: 36px;
 }
 
 .fa-magnifying-glass:hover {
-    color: #22a5ae;
+    color: lightgreen;
     font-size: 40px;
 }
 
@@ -377,16 +377,13 @@ body:before {
 
 i {
     font-size: 64px;
-    color: #12c6de;
+    color: floralwhite;
     transition: color 0.3s ease;
 }
 
 .sidebar .add-note {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
+    text-align: center;
     margin-top: 30px;
-    height: 140px;
 }
 
 .dates{
@@ -410,7 +407,7 @@ input[type="date"] {
     position: absolute;
     right: -8%;
     top: -25%;
-    color: #d9266b;
+    color: firebrick;
     opacity: 0;
     transition: opacity 0.3s ease;
     font-weight: bold;
@@ -557,6 +554,7 @@ input[type="date"] {
 
 .box-note {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -610,6 +608,8 @@ input[type="date"] {
 
 .ingredients-list {
     list-style: none;
+    display: flex;
+    flex-direction: row;
     padding: 0;
 }
 
@@ -820,12 +820,6 @@ a {
     font-size: 32px;
 }
 
-.fa-filter-circle-xmark{
-    font-weight: bold;
-    font-size: 32px;
-    color: #ff005d;
-}
-
 .filter{
     transition: .3s;
     background-color: transparent;
@@ -869,7 +863,7 @@ button .fa-filter:hover{
 }
 
 .fa-xmark {
-    color: #f4157e;
+    color: firebrick;
     font-size: 46px;
     position: absolute;
     top: 1%;
@@ -878,7 +872,7 @@ button .fa-filter:hover{
 }
 
 .fa-xmark:hover {
-    color: crimson;
+    color: red;
     font-size: 50px;
 }
 

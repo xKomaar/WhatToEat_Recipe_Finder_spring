@@ -6,6 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Ingredient Input</title>
 		<link rel="stylesheet" th:href="@{/css/ingredients.css}" />
+		<link rel="stylesheet" th:href="@{/css/boxshadows.css}" />
 		<script src="https://kit.fontawesome.com/30b5c3e166.js" crossorigin="anonymous"></script>
 	</head>
 	<body>
@@ -14,18 +15,18 @@
 				<h1 class="what">What<span class="to">To</span><span class="eat">Eat</span></h1>
 				<div class="line"></div>
 				<div class="add-note anim" style="--delay: 0.2s">
-					<label><a th:href="@{'/ingredients_input/' + 'add'}"><i class="fa-solid fa-circle-plus"></i></a><br> Add Ingredient</label>
+					<label><a th:href="@{'/ingredients_input/' + 'add'}"><i class="fa-solid fa-circle-plus"></i></a><br>Add Ingredient</label>
 				</div>
 				<div class="add-note anim" style="--delay: 0.2s">
-					<label><a th:href="@{'/ingredients_input/' + 'deleteAll'}"><i class="fa-solid fa-trash-can"></i></a><br> Delete All Ingredients</label>
+					<label><a th:href="@{'/ingredients_input/' + 'deleteAll'}"><i class="fa-solid fa-trash-can"></i></a><br>Delete All Ingredients</label>
 				</div>
 				<br>
-				<div class="slide-bar">
+				<div class="slide-bar anim">
 					<label for="slider">Minimum Match Percentage: <span id="sliderValue">50</span></label>
-					<input type="range" id="slider" name="slider" min="0" max="100" value="50">
+					<input type="range" id="slider" name="slider" min="25" max="100" value="50">
 				</div>
 				<div class="add-note anim" style="--delay: 0.2s">
-					<label><a th:href="@{'/recipes'}"><i class="fa-solid fa-search"></i></a><br> Search For Recipes</label>
+					<label><a th:href="@{'/recipes'}"><i class="fa-solid fa-search"></i></a><br>Search For Recipes</label>
 				</div>
 			</div>
 			<div class="wrapper">
@@ -34,7 +35,7 @@
 						<ul th:each="ingredient : ${ingredientList}">
 							<div class="container-catalog">
 								<li>
-									<i class="fa-solid fa-utensils"></i>
+									<i class="fa-solid fa-burger" style="color: #e5cb7a;"></i>
 									<br>
 									<span th:text="${ingredient}">Ingredient Name</span>
 								</li>
@@ -42,9 +43,6 @@
 									<a th:href="@{'/ingredients_input/' + 'delete/' + ${ingredient}}"
 										><i class="fa-solid fa-xmark"></i
 									></a>
-<!--									<a th:href="@{'/input_ingredients/' + 'edit/' + ${ingredient}}"-->
-<!--										><i class="fa-regular fa-pen-to-square"></i-->
-<!--									></a>-->
 								</div>
 							</div>
 						</ul>
