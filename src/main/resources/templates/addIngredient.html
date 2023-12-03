@@ -13,10 +13,10 @@
   <div class="sidebar">
     <h1 class="what">What<span class="to">To</span><span class="eat">Eat</span></h1>
     <div class="line"></div>
-    <div class="add-note anim" style="--delay: 0.2s">
+    <div class="sidebar-icon anim" style="--delay: 0.2s">
       <label><a th:href="@{'/ingredients_input/' + 'add'}"><i class="fa-solid fa-circle-plus"></i></a><br>Add Ingredient</label>
     </div>
-    <div class="add-note anim" style="--delay: 0.2s">
+    <div class="sidebar-icon anim" style="--delay: 0.2s">
       <label><a th:href="@{'/ingredients_input/' + 'deleteAll'}"><i class="fa-solid fa-trash-can"></i></a><br>Delete All Ingredients</label>
     </div>
     <br>
@@ -24,15 +24,15 @@
       <label for="slider">Minimum Match Percentage: <span id="sliderValue">50</span></label>
       <input type="range" id="slider" name="slider" min="25" max="100" value="50">
     </div>
-    <div class="add-note anim" style="--delay: 0.2s">
+    <div class="sidebar-icon anim" style="--delay: 0.2s">
       <label><a th:href="@{'/recipes'}"><i class="fa-solid fa-search"></i></a><br>Search For Recipes</label>
     </div>
   </div>
   <div class="wrapper">
     <div class="main-container">
-      <div class="anim main-catalog" style="--delay: 0.1s">
+      <div class="anim main-ingredients" style="--delay: 0.1s">
         <ul th:each="ingredient : ${ingredientList}">
-          <div class="container-catalog">
+          <div class="container-ingredient">
             <li>
               <i class="fa-solid fa-burger" style="color: #e5cb7a;"></i>
               <br>
@@ -49,8 +49,8 @@
     </div>
   </div>
 </div>
-<div class="create-catalog">
-  <div class="box-catalog">
+<div class="add-ingredient">
+  <div class="box-ingredient">
     <form th:action="@{'/ingredients_input/' + 'add'}" th:method="post">
       <h2 class="note">Add an Ingredient</h2>
       <div class="input-box">

@@ -9,40 +9,6 @@
   <link rel="stylesheet" th:href="@{/css/recipes.css}" />
   <link rel="stylesheet" th:href="@{/css/boxshadows.css}" />
   <script src="https://kit.fontawesome.com/30b5c3e166.js" crossorigin="anonymous"></script>
-  <style>
-    body > div.create-note > div > div.ingredients-container.input-box {
-      margin: 0 0 2% 0!important;
-      overflow-y: auto!important;
-      max-height: 40%!important;;
-      display: block!important;
-
-    }
-    .ingredients-list{
-      margin: 0!important;
-    }
-    body  div.create-note  div  div.ingredients-container.input-box  label {
-      position: unset!important;
-    }
-    .input-box label{
-      position: unset!important;
-    }
-    .instructions-container {
-      max-height: 400px!important;
-      overflow-y: auto!important;
-      margin-top: 5%!important;
-    }
-
-    .input-box {
-      display: unset!important;
-      position: unset!important;
-      justify-content: center!important;
-      margin: 0px!important;
-
-    }
-    body > div.create-note > div > label:nth-child(2) {
-      margin-top: 7%!important;
-    }
-  </style>
 
 </head>
 
@@ -51,16 +17,16 @@
   <div class="sidebar">
     <h1 class="what">What<span class="to">To</span><span class="eat">Eat</span></h1>
     <div class="line"></div>
-    <div class="add-note anim" style="--delay: 0.2s">
+    <div class="sidebar-icon anim" style="--delay: 0.2s">
       <label><a th:href="@{'/recipes' + '/sortByMatchPercent'}"><i class="fa-solid fa-arrow-down-9-1"></i></a><br>Sort By Match Percentage</label>
     </div>
-    <div class="add-note anim" style="--delay: 0.2s">
+    <div class="sidebar-icon anim" style="--delay: 0.2s">
       <label><a th:href="@{'/recipes' + '/sortByIngredientCount'}"><i class="fa-solid fa-arrow-down-short-wide"></i></a><br>Sort By Ingredient Count</label>
     </div>
-    <div class="add-note anim" style="--delay: 0.2s">
+    <div class="sidebar-icon anim" style="--delay: 0.2s">
       <label><a th:href="@{'/recipes' + '/dontSort'}"><i class="fa-solid fa-filter-circle-xmark"></i></a><br>Clear Sorting and Searching</label>
     </div>
-    <div class="add-note anim" style="--delay: 0.2s">
+    <div class="sidebar-icon anim" style="--delay: 0.2s">
       <label><a th:href="@{'/ingredients_input'}"><i class="fa-solid fa-arrow-left"></i></a><br>Go Back to Ingredients Input</label>
     </div>
   </div>
@@ -72,10 +38,10 @@
       </form>
     </div>
     <div class="main-container">
-      <div class="anim main-notes" style="--delay: 0.1s">
+      <div class="anim main-recipes" style="--delay: 0.1s">
         <ul th:each="recipe : ${recipeList}">
           <a th:href="@{'/recipes/recipeView?title=' + ${recipe.getTitle()}}" class="recipe-container-link" style="color: inherit; text-decoration: none; border: none; background-color: transparent;">
-            <div class="container-notes">
+            <div class="container-recipes">
               <div class="testimonial">
                 <h3 th:text="${recipe.getTitle()}"></h3>
                 <p><img th:src="@{'/food_img/' + ${recipe.getPictureLink()} + '.jpg'}" /></p>
@@ -105,11 +71,11 @@
   </div>
 </div>
 
-<div class="create-note">
-  <div class="box-note">
-    <h2 class="note" th:text="${recipe.getTitle()}"></h2>
+<div class="recipe-container">
+  <div class="box-recipe">
+    <h2 class="title" th:text="${recipe.getTitle()}"></h2>
     <label style="font-size: 20px; "><b>Ingredients:</b></label>
-    <div class="ingredients-container input-box" >
+    <div class="ingredients-container box" >
 
       <ul class="ingredients-list" th:each="ingredient : ${recipe.getIngredientList()}" >
         <li th:if="${ingredient.isAvailable()}" th:text="'• ' + ${ingredient.getName()}" style="color: green;"></li>
@@ -117,7 +83,7 @@
       </ul>
     </div>
     <label style="font-size: 20px; "><b>Instructions:</b></label>
-    <div class="instructions-container input-box">
+    <div class="instructions-container box">
 
       <p th:text="${recipe.getInstructions()}"></p>
     </div>

@@ -81,14 +81,15 @@ body:before {
 }
 
 .recipe-container-link {
-    text-decoration: none; /* Remove default link underline */
-    color: inherit; /* Inherit text color from the parent */
+    text-decoration: none;
+    color: inherit;
     cursor: pointer;
 }
 
 .recipe-container-link:hover {
-    background-color: #F5F5DC; /* Beige or off-white color on hover */
+    background-color: #F5F5DC;
 }
+
 .sidebar {
     width: 300px;
     height: 100%;
@@ -111,41 +112,6 @@ body:before {
         transform: none;
     }
 }
-.side-menu {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
-
-.side-menu a {
-    margin: 0;
-    padding: 0;
-    display: block;
-    text-decoration: none;
-    color: aliceblue;
-    font-size: 16px;
-}
-
-.side-title {
-    font-weight: bold;
-    color: aliceblue;
-    font-size: 18px;
-    letter-spacing: 0.07em;
-    margin-bottom: 24px;
-}
-
-.side-title-wrong
-{
-    font-weight: bold;
-    color: #ff005d;
-    font-size: 18px;
-    letter-spacing: 0.07em;
-    margin-bottom: 24px;
-}
-
-.side-wrapper {
-    color: aliceblue;
-}
 
 .wrapper {
     display: flex;
@@ -153,7 +119,6 @@ body:before {
     flex-grow: 1;
     overflow: auto;
 }
-
 
 .search-bar {
     background-color: var(--button-bg);
@@ -231,72 +196,6 @@ body:before {
     margin-top: 20px;
 }
 
-.header .nav {
-    display: inline-flex;
-    position: relative;
-    overflow: hidden;
-    max-width: 100%;
-    background-color: var(--theme-bg);
-    margin-top: 10px;
-    padding: 0 5px;
-    border-radius: 40px;
-    box-shadow: 0px 0px 10px 10px rgba(104, 114, 168, 0.8);
-}
-
-.header .nav a {
-    font-weight: bold;
-}
-
-.header .nav-item {
-    color: #83818c;
-    padding: 20px;
-    text-decoration: none;
-    transition: 0.3s;
-    margin: 0 6px;
-    z-index: 1;
-    font-family: "DM Sans", sans-serif;
-    font-weight: 500;
-    position: relative;
-}
-
-.header .nav-item:before {
-    content: "";
-    position: absolute;
-    bottom: -6px;
-    left: 0;
-    width: 100%;
-    height: 5px;
-    background-color: #dfe2ea;
-    border-radius: 8px 8px 0 0;
-    opacity: 0;
-    transition: 0.3s;
-}
-
-.header .nav-item:not(.is-active):hover:before {
-    opacity: 1;
-    bottom: 0;
-}
-
-.header .nav-item:not(.is-active):hover {
-    color: #f3eeee;
-}
-
-.header .nav-indicator {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 4px;
-    transition: 0.4s;
-    height: 5px;
-    z-index: 1;
-    border-radius: 8px 8px 0 0;
-}
-
-@media (max-width: 580px) {
-    .header .nav {
-        overflow: auto;
-    }
-}
 .main-container {
     display: flex;
     flex-direction: column;
@@ -309,51 +208,20 @@ body:before {
     animation: bottom 0.8s var(--delay) both;
 }
 
-.main-header {
-    font-size: 30px;
-    color: #fff;
-    font-weight: 700;
-    padding-bottom: 20px;
-    position: sticky;
-    top: 0;
-    left: 0;
-    z-index: 11;
-}
-
-.small-header {
-    font-size: 24px;
-    font-weight: 500;
-    color: #fff;
-    margin: 30px 0 20px;
-}
-
-.main-notes {
+.main-recipes {
     margin-top:100px;
     display: flex;
     flex-wrap: wrap;
 }
 
-.main-notes ul {
+.main-recipes ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.main-notes li {
-    flex: 0 0 33.33%;
-    padding: 10px;
-}
 
-.main-notes li a {
-    display: block;
-    margin-bottom: 5px;
-    text-decoration: none;
-    color: aliceblue;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.container-notes {
+.container-recipes {
     display: inline-block;
     flex-wrap: wrap;
     align-content: space-around;
@@ -371,38 +239,18 @@ body:before {
     transition: all 0.3s;
 }
 
-.container-notes a {
-    text-decoration: none;
-}
-
 i {
     font-size: 64px;
     color: floralwhite;
     transition: color 0.3s ease;
 }
 
-.sidebar .add-note {
+.sidebar .sidebar-icon {
     text-align: center;
     margin-top: 30px;
 }
 
-.dates{
-    margin-left: 20px ;
-}
-
-input[type="date"] {
-    color: #fff;
-    background-color: var(--button-bg);
-    border: none;
-    border-radius: 10px;
-    padding: 8px;
-}
-
-.date-note{
-    color: aliceblue;
-}
-
-.container-notes i.fa-xmark {
+.container-recipes i.fa-xmark {
     font-size: 48px;
     position: absolute;
     right: -8%;
@@ -413,56 +261,11 @@ input[type="date"] {
     font-weight: bold;
 }
 
-.container-notes i.fa-share {
-    font-size: 32px;
-    position: absolute;
-    left: -9%;
-    top: 40%;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    font-weight: bold;
-}
-
-.container-notes i.fa-pen-to-square {
-    font-size: 42px;
-    position: absolute;
-    left: -13%;
-    top: -25%;
-    color: orange;
-    transform: scaleX(-1);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    font-weight: bold;
-}
-
-.container-notes:hover i.fa-xmark,
-.container-notes:hover i.fa-share,
-.container-notes:hover i.fa-pen-to-square {
+.container-recipes:hover i.fa-xmark {
     opacity: 1;
 }
 
-.container-notes .fa-folder:hover {
-    color: lightgreen;
-}
-
-.container-notes a {
-    transition: color 0.3s ease;
-}
-
-.container-notes a:hover {
-    color: lightgreen;
-}
-
-.side-menu a {
-    transition: color 0.3s ease;
-}
-
-.side-menu a:hover {
-    font-weight: bold;
-    color: #12c6de;
-}
-
-.add-note i:hover {
+.sidebar-icon i:hover {
     font-size: 70px;
     color: lightgreen;
 }
@@ -470,31 +273,6 @@ input[type="date"] {
 .line {
     margin-top: 20px;
     border-bottom: solid 1px rgba(240, 248, 255, 0.8);
-}
-
-.line-share {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border-bottom: solid 1px rgba(240, 248, 255, 0.8);
-}
-
-.cursor {
-    position: absolute;
-    z-index: 1;
-    border-radius: 100%;
-    background: radial-gradient(circle, #d9266b, #12c6de);
-    width: 250px;
-    height: 250px;
-    left: 0;
-    top: 0;
-    pointer-events: none;
-    opacity: 0;
-    filter: blur(30px) opacity(30%);
-    transition: opacity 1s ease-in-out;
-}
-
-.name {
-    color: aquamarine;
 }
 
 .testimonial {
@@ -507,7 +285,7 @@ input[type="date"] {
     overflow: auto;
 }
 
-.container-notes:hover {
+.container-recipes:hover {
     transform: scale(1.1);
     z-index: 100;
 }
@@ -525,35 +303,8 @@ input[type="date"] {
 .testimonial p {
     font-size: 18px;
 }
-.testimonial .date {
-    display: block;
-    margin-top: 16px;
-    font-style: italic;
-    font-size: 0.9em;
-    opacity: 0.5;
-}
-.testimonial .date:before {
-    content: "from ";
-}
 
-.testimonial .link {
-    color: rgb(255, 0, 93);
-    display: block;
-    margin-top: 12px;
-    font-weight: bold;
-    font-style: italic;
-    opacity: 0.5;
-}
-
-.testimonial .link:before {
-    content: "link ";
-}
-
-.testimonial .link:before:hover {
-    cursor: none;
-}
-
-.box-note {
+.box-recipe {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -570,7 +321,7 @@ input[type="date"] {
     padding: 20px;
 }
 
-.create-note {
+.recipe-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -584,7 +335,7 @@ input[type="date"] {
     z-index: 100;
 }
 
-.create-note .note {
+.recipe-container .title {
     width: 300px;
     position: absolute;
     top: 5%;
@@ -593,7 +344,7 @@ input[type="date"] {
     color: #353434
 }
 
-.create-note {
+.recipe-container {
     color: #353434;
     height: auto;
 }
@@ -624,242 +375,37 @@ input[type="date"] {
     overflow-y: auto;
 }
 
-.input-box {
-    display: flex;
-    position: relative;
-    justify-content: center;
-    margin: 40px 0;
+body > div.recipe-container > div > div.ingredients-container.box {
+    margin: 0 0 2% 0!important;
+    overflow-y: auto!important;
+    max-height: 40%!important;;
+    display: block!important;
+
+}
+.ingredients-list{
+    margin: 0!important;
+}
+body  div.recipe-container  div  div.ingredients-container.box  label {
+    position: unset!important;
+}
+.box label{
+    position: unset!important;
+}
+.instructions-container {
+    max-height: 400px!important;
+    overflow-y: auto!important;
+    margin-top: 5%!important;
 }
 
-.input-box label {
-    position: absolute;
-    top: -13%;
-    font-size: 1.1em;
-    pointer-events: none;
+.box {
+    display: unset!important;
+    position: unset!important;
+    justify-content: center!important;
+    margin: 0px!important;
+
 }
-
-.input-box .content {
-    top: -15%;
-}
-
-.input-box input,
-.input-box textarea {
-    font-family: "Poppins", sans-serif;
-    font-weight: bold;
-    color: #7f063e;
-    width: 80%;
-    outline: none;
-    font-size: 1.2em;
-    border-radius: 25px;
-    padding: 10px;
-}
-
-
-form .button {
-    position: absolute;
-    top: 90%;
-    width: 200px;
-    height: 40px;
-    transform: translate(-50%, -50%);
-    background-color: #f4157e;
-    color: aliceblue;
-    border: none;
-    border-radius: 50px;
-    outline: none;
-    cursor: pointer;
-    font-size: 1em;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.button:hover {
-    cursor: pointer;
-    background-color: aqua;
-    color: #f4157e;
-}
-
-.share {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 300px;
-    height: 500px;
-}
-
-.note-share {
-    width: 200px;
-    position: absolute;
-    top: 4%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #960a4b;
-}
-
-.shared-users {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding-top: 10px;
-    padding-bottom: 20px;
-    width: 250px;
-    height: 250px;
-    background-color: rgba(59, 180, 197, 0.78);
-    border-radius: 20px;
-    overflow: auto;
-    text-align: center;
-}
-
-.shared-users .user-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-}
-
-.shared-users .user-list li {
-    list-style-type: none;
-}
-
-.shared-users .user-list p {
-    display: inline-block;
-    margin: 0;
-    list-style-type: none;
-    color: aliceblue;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.share-note {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    background-color: #202424ad;
-    z-index: 100;
-}
-
-.input-box-share {
-    width: 300px;
-    height: 300px;
-    position: absolute;
-    left: 50%;
-    top: 100%;
-    transform: translate(-50%, -50%);
-}
-
-.input-box-share label {
-    width: 300px;
-    height: 300px;
-    position: absolute;
-    left: 50%;
-    top: 45%;
-    transform: translate(-50%, -50%);
-}
-
-.input-box-share input {
-    position: absolute;
-    left: 50%;
-    width: 200px;
-    top: 14%;
-    font-size: 1.1em;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-}
-
-.input-box-share input {
-    font-family: "Poppins", sans-serif;
-    text-align: center;
-    font-weight: bold;
-    color: #7f063e;
-    width: 80%;
-    height: 50px;
-    border: none;
-    outline: none;
-    font-size: 1.2em;
-    border-radius: 25px;
-}
-
-.user-note {
-    color: floralwhite;
-    font-size: 16px;
-    letter-spacing: 0px;
-}
-
-.user-share p {
-    display: inline;
-}
-
-a {
-    transition: opacity 1s ease-in-out;
-}
-
-.user-share i {
-    font-size: 16px;
-    color: #d9266b;
-}
-
-.user-share i:hover {
-    color: #05beae;
-}
-
-.name-catalog{
-    font-weight: bold;
-    letter-spacing: 2px;
-    font-size: 20px;
-    color: rgba(0, 255, 255, 0.69);
-}
-
-.sort{
-    font-weight: bold;
-    color: aquamarine;
-    font-size: 32px;
-}
-
-.filter{
-    transition: .3s;
-    background-color: transparent;
-    border: none;
-    position: absolute;
-    left: 87%;
-    top: 75%;
-    width: 60px;
-    height: 60px;
-    transform: translate(-50%, -50%);
-}
-
-i{
-    transition: .2s;
-}
-
-button .fa-filter{
-    font-size: 42px;
-    color: aquamarine;
-}
-
-button .fa-filter:hover{
-    font-size: 46px;
-    cursor: pointer;
-    color:chartreuse;
-    background-color: transparent;
-}
-
-.sort:hover{
-    font-size: 46px;
-    color:chartreuse;
-}
-
-.fa-filter-circle-xmark:hover{
-    font-size: 46px;
-    color:#7f063e;
-}
-
-.fa-folder-plus:hover{
-    font-size: 70px;
+body > div.recipe-container > div > label:nth-child(2) {
+    margin-top: 7%!important;
 }
 
 .fa-xmark {
@@ -874,27 +420,4 @@ button .fa-filter:hover{
 .fa-xmark:hover {
     color: red;
     font-size: 50px;
-}
-
-.error-label-name {
-    text-align: center;
-    position: absolute;
-    left: -400px;
-    font-size: 15px;
-    padding: 3px;
-    width: 320px;
-    font-weight: bold;
-    color: #f4157e;
-    border-radius: 15px;
-    background-color: rgba(76, 69, 112, 0.84);
-}
-
-.error-label-name::after {
-    content: '\2192';
-    font-weight: bold;
-    font-size: 56px;
-    position: absolute;
-    right: -40px;
-    top: 50%;
-    transform: translateY(-50%);
 }
