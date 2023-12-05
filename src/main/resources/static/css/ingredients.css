@@ -68,7 +68,7 @@ body:before {
 }
 
 .container .sidebar .what {
-	color: #CECE5A;
+	color: #E6E3DC;
 }
 
 .container .sidebar .to {
@@ -228,7 +228,7 @@ i {
 	text-align: center;
 	width: 350px;
 	height: 280px;
-	background: #fef6e4;
+	background: #E6E3DC;
 	border-radius: 50px;
 }
 
@@ -323,4 +323,20 @@ i{
 .fa-xmark:hover {
 	color: red;
 	font-size: 50px;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background: #52535f;
+}
+
+::-webkit-scrollbar-thumb {
+	background: floralwhite;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: lightgreen;
 }

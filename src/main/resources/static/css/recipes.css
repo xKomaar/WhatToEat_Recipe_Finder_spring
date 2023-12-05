@@ -69,7 +69,7 @@ body:before {
 }
 
 .container .sidebar .what {
-    color: #CECE5A;
+    color: #E6E3DC;
 }
 
 .container .sidebar .to {
@@ -316,7 +316,7 @@ i {
     width: 70%;
     height: 700px;
     transform: translate(-50%, -50%);
-    background: #fef6e4;
+    background: #E6E3DC;
     border-radius: 25px;
     padding: 20px;
 }
@@ -420,4 +420,20 @@ body > div.recipe-container > div > label:nth-child(2) {
 .fa-xmark:hover {
     color: red;
     font-size: 50px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #52535f;
+}
+
+::-webkit-scrollbar-thumb {
+    background: floralwhite;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: lightgreen;
 }
