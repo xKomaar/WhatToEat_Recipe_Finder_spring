@@ -131,6 +131,7 @@ body:before {
 
 .slide-bar input:hover {
 	opacity: 1;
+	background: lightgreen;
 }
 
 .slide-bar input::-webkit-slider-thumb {
