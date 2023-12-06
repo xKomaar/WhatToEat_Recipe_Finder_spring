@@ -46,10 +46,10 @@
                                 <div th:if="${recipe.getMatchPercent() >= 85}" style="color: green;">
                                     Match Percentage = <span th:text="${recipe.getMatchPercent()}"></span>
                                 </div>
-                                <div th:if="${recipe.getMatchPercent() >= 70 and recipe.getMatchPercent() < 85}" style="color: orange;">
+                                <div th:if="${recipe.getMatchPercent() >= 70 and recipe.getMatchPercent() < 85}" style="color: #FFD700;">
                                     Match Percentage = <span th:text="${recipe.getMatchPercent()}"></span>
                                 </div>
-                                <div th:if="${recipe.getMatchPercent() >= 50 and recipe.getMatchPercent() < 70}" style="color: #FFD700;"> <!-- Use gold color -->
+                                <div th:if="${recipe.getMatchPercent() >= 50 and recipe.getMatchPercent() < 70}" style="color: orange;">
                                     Match Percentage = <span th:text="${recipe.getMatchPercent()}"></span>
                                 </div>
                                 <div th:if="${recipe.getMatchPercent() < 50}" style="color: red;">
